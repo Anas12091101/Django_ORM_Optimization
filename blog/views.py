@@ -6,7 +6,7 @@ import time
 
 # 1. BAD QUERY: N+1 Problem
 # Example Use Case: Fetching books and their authors
-def bad_query_n_plus_1(request):
+def bad_query_foreign_key(request):
     start_time = time.time()
     books = Book.objects.all()  # Fetches all books but does not fetch authors
 
@@ -18,7 +18,7 @@ def bad_query_n_plus_1(request):
     return JsonResponse({"books": data, "query_time": end_time - start_time})
 
 # GOOD QUERY: Using select_related to fix N+1
-def good_query_n_plus_1(request):
+def good_query_foreign_key(request):
     start_time = time.time()
     books = Book.objects.select_related("author").all()  # Fetches books + authors in one query
 

@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.stdout.write("Creating authors and books...")
 
-        for _ in tqdm(range(5000)):  # Create 1000 authors
+        for _ in tqdm(range(500)):  # Create 500 authors
             author = Author.objects.create(name=fake.name())
 
             # Create 100 books for each author
